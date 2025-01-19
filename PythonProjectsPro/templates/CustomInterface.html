@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scott in Touch</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='logo-icon.svg') }}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* CSS remains unchanged from the original file */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "DM Mono", monospace;
+      }
+      .logo {
+        padding: 24px 24px 56px 24px;
+        background: #fff;
+        display: flex;
+        position: relative;
+        left: 0;
+      }
+      .logo-text {
+        font-size: 32px;
+        line-height: 58px;
+        padding-left: 13px;
+      }
+      body {
+        line-height: 24px;
+        color: #31566d;
+        background-color: #fff;
+      }
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 auto;
+      }
+      .right-side {
+        flex: 1 1 55%;
+        padding: 32px 72px;
+        background: #e6ebdf;
+        border-radius: 10px;
+        margin: 24px 24px 24px auto;
+        max-width: 900px;
+      }
+      .section {
+        padding-bottom: 40px;
+        width: 100%;
+        overflow: auto;
+      }
+      .alternative-contact {
+        padding: 0 50px;
+      }
+      .visit-scott::before,
+      .chat-with-scott::before,
+      .connect-with-scott::before {
+        padding-right: 22px;
+        float: left;
+      }
+      .visit-scott::before {
+        content: url("{{ url_for('static', filename='location_icon.svg') }}");
+      }
+      .chat-with-scott::before {
+        content: url("{{ url_for('static', filename='chat_icon.svg') }}");
+      }
+      .connect-with-scott::before {
+        content: url("{{ url_for('static', filename='connect_icon.svg') }}");
+      }
+      .visit-scott > span,
+      .chat-with-scott > span,
+      .connect-with-scott > span {
+        display: block;
+        overflow: auto;
+      }
+
+      h1 {
+        margin-bottom: 4px;
+        line-height: 64px;
+        font-size: 48px;
+        font-weight: 500;
+      }
+      h2 {
+        font-size: 20px;
+        font-weight: 500;
+      }
+
+      p {
+        line-height: 24px;
+        font-size: 14px;
+      }
+      .description {
+        color: #667985;
+        padding-bottom: 8px;
+        font-size: 16px;
+      }
+      a {
+        color: #31566d;
+      }
+      a:hover {
+        cursor: pointer;
+      }
+
+      .footer-buttons {
+        display: flex;
+        gap: 22px;
+      }
+
+      form {
+        margin-top: 24px;
+      }
+      .form-group {
+        margin-bottom: 8px;
+      }
+      form label {
+        display: block;
+        margin-bottom: 4px;
+        font-size: 16px;
+      }
+      form input,
+      form textarea {
+        width: 100%;
+        padding: 8px 16px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        color: #31566d;
+        border: solid 2px #31566d;
+        background-color: #f7faf2;
+        font-size: 16px;
+        height: 40px;
+      }
+      input::placeholder,
+      textarea::placeholder {
+        color: #667985;
+        font-style: italic;
+      }
+
+      form textarea {
+        resize: vertical;
+        min-height: 144px;
+        overflow: scroll;
+        margin-bottom: 24px;
+      }
+      form button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #31566d;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        width: 100%;
+        height: 60px;
+      }
+      form button:hover {
+        background-color: #1e4257;
+      }
+
+      .footer {
+        background: #31566d;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+        width: 100%;
+      }
+
+      html,
+      body {
+        min-width: 375px;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1130px) {
+        html {
+          overflow: scroll;
+          overflow: overlay;
+        }
+        .logo {
+          padding-bottom: 24px;
+          min-width: 375px;
+          padding-right: 0;
+        }
+        .alternative-contact {
+          display: none;
+        }
+        .container {
+          flex-direction: column;
+        }
+        .right-side {
+          flex: 1 1 100%;
+          padding: 24px;
+        }
+
+        .left-side {
+          padding: 0;
+        }
+        .right-side {
+          margin-top: 0;
+          margin-right: 24px;
+          margin-left: 24px;
+          max-width: 1120px;
+        }
+        .footer {
+          min-width: min-content;
+        }
+      }
+
+      /* Browser Styles*/
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left-side">
+        <div class="logo">
+          <img type="svg" src="{{ url_for('static', filename='logo-icon.svg') }}" class="logo-icon" />
+          <span class="logo-text">Scott in Touch</span>
+        </div>
+        <div class="alternative-contact">
+          <div class="section visit-scott">
+            <span>
+              <h2>Visit Scott</h2>
+              <p class="description">Stop by Office HQ.</p>
+              <p>
+                <a
+                  href="https://maps.app.goo.gl/h3LXGW9SQE3iL46k7"
+                  target="_blank"
+                  >John E. Matthews Jr. School of Computing</a
+                >
+              </p>
+              <p>Building 15, Room 3217</p>
+            </span>
+          </div>
+
+          <div class="section chat-with-scott">
+            <span>
+              <h2>Chat with Scott</h2>
+              <p class="description">Send a message via Discord.</p>
+              <p>
+                Username:
+                <a
+                  href="https://discordapp.com/users/scottpiersall"
+                  target="_blank"
+                  >scottpiersall</a
+                >
+              </p>
+            </span>
+          </div>
+
+          <div class="section connect-with-scott">
+            <span>
+              <h2>Connect with Scott</h2>
+              <p class="description">Link with Scott on LinkedIn.</p>
+              <p>
+                <a
+                  href="https://www.linkedin.com/in/scott-piersall-8684a411/"
+                  target="_blank"
+                  >www.linkedin.com</a
+                >
+              </p>
+            </span>
+          </div>
+
+          <div class="footer-buttons">
+            <a
+              href="https://www.linkedin.com/in/scott-piersall-31039947/"
+              target="_blank"
+              ><img class="linkedin" src="{{ url_for('static', filename='linkedin_button.svg') }}" alt="LinkedIn Button"
+            /></a>
+            <a href="https://discordapp.com/users/scottpiersall" target="_blank"
+              ><img class="discord" src="{{ url_for('static', filename='discord_button.svg') }}" alt="Discord Button"
+            /></a>
+            <a href="https://github.com/scottpiersall" target="_blank"
+              ><img class="github" src="{{ url_for('static', filename='github_button.svg') }}" alt="GitHub Button"
+            /></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="right-side">
+        <h1>Got Questions?<br />We've got Scott.</h1>
+        <p class="description">
+          Send a message directly to Scott for the guidance you need!
+        </p>
+
+        <form action="/submit-form" method="post">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              placeholder="Enter your name"
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              class="email"
+              name="email"
+              required
+              placeholder="e.g. student@unf.org"
+            />
+          </div>
+          <div class="form-group">
+            <label for="n-number">Student ID</label>
+            <input
+              type="text"
+              id="n-number"
+              name="n-number"
+              required
+              maxlength="9"
+              placeholder="e.g. N########"
+              pattern="N\d{8}"
+            />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="6"
+              required
+              placeholder="Write your message here"
+            ></textarea>
+          </div>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+      <footer class="footer">
+        <p class="footer-text">
+          &copy; 2024 Code Breakers | Systems Programming
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
